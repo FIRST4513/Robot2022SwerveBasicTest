@@ -165,16 +165,16 @@ public class SwerveModule {
     }
 
     public void updateShuffleBoard(){
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Tgt Angle", tgtAngle);
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Tgt Speed", tgtSpeed);
+        SmartDashboard.putNumber( swerveModuleID + " Tgt Angle", tgtAngle);
+        SmartDashboard.putNumber( swerveModuleID + " Tgt Speed", tgtSpeed);
 
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Turn Encoder", getAbsoluteEncoderPosition());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Turn Angle Degrees", getAbsoluteEncoderDegrees());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Turn Angle Radians", getAbsoluteEncoderRad());
+        SmartDashboard.putNumber( swerveModuleID + " Turn Encoder", getAbsoluteEncoderPosition());
+        SmartDashboard.putNumber( swerveModuleID + " Turn Angle Degrees", getAbsoluteEncoderDegrees());
+        SmartDashboard.putNumber( swerveModuleID + " Turn Angle Radians", getAbsoluteEncoderRad());
 
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Drive Encoder", getDriveWheelEncoderPosition());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Drive Inches", Units.metersToInches(getDrivePosition()));
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Drive Meters", getDrivePosition());
+        SmartDashboard.putNumber( swerveModuleID + " Drive Encoder", getDriveWheelEncoderPosition());
+        SmartDashboard.putNumber( swerveModuleID + " Drive Inches", Units.metersToInches(getDrivePosition()));
+        SmartDashboard.putNumber( swerveModuleID + " Drive Meters", getDrivePosition());
     }
 
     public void stop() {
