@@ -125,7 +125,7 @@ public class SwerveModule {
         return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad()));
     }
 
-    public void setsetSingleModule(double speed, double angle) {   
+    public void setSingleModule(double speed, double angle) {   
         // speed in Meters/sec , angle in Degrees   
         tgtSpeed = speed;
         tgtAngle = angle;
