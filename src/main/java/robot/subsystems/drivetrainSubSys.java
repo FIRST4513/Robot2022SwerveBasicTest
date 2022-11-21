@@ -158,6 +158,18 @@ public class drivetrainSubSys extends SubsystemBase {
         backRight.stop();
     }
 
+    public void setSingleModuleState(int canID, double speed, double angle) { 
+        // Angle in degrees     
+        if (canID == DriveTrainConstants.kFrontLeftDriveMotorPort){
+            frontLeft.setsetSingleModule( speed, angle);
+        } else if (canID == DriveTrainConstants.kBackLeftDriveMotorPort){ 
+            backLeft.setsetSingleModule( speed, angle);
+        } else if (canID == DriveTrainConstants.kFrontRightDriveMotorPort){ 
+            frontRight.setsetSingleModule( speed, angle);
+        } else if (canID == DriveTrainConstants.kBackRightDriveMotorPort){ 
+            backRight.setsetSingleModule( speed, angle);}
+    }
+
     public void setModuleStates(SwerveModuleState[] desiredStates) {
         // Make sure all wheels are at the same Velocity (in the "desiredStates" Array)
         SwerveDriveKinematics.desaturateWheelSpeeds(

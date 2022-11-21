@@ -70,6 +70,25 @@ public class driveByJoystickCmd extends CommandBase {
         ySpeed = ySpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
         turningSpeed = turningSpeed * DriveTrainConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
 
+        // Send raw data to swerve module (For Testing Purposes)
+        if (m_joystick.getRawButton(5)){
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, turningSpeed);
+        } else if (m_joystick.getRawButton(6)){
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, turningSpeed);
+        } else if (m_joystick.getRawButton(3)){
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, turningSpeed);
+        } else if (m_joystick.getRawButton(4)){
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
+        } else if (m_joystick.getRawButton(4)){
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
+        } else if (m_joystick.getRawButton(1)){
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
+        }
+
+        /*
         // Step 3 - Create a "Chassis Speeds" Object from field velocity targets and current Gyro Angle
         ChassisSpeeds chassisSpeeds;
         if(  m_joystick.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)){
@@ -81,13 +100,14 @@ public class driveByJoystickCmd extends CommandBase {
             chassisSpeeds = new ChassisSpeeds(xSpeed, ySpeed, turningSpeed);
         }
 
-        // Step 4 - Create a "Swerve Module States" object from the "chassis Speeds" object
+        // Step 4 - Create a "Swerve Module States" Array object from the "chassis Speeds" object
         // This creates a SwerveModuleState Array of Swerve Drive States.
         // Each array element contains "Drive-Velocity" and "Turn-Angle" values. 
         SwerveModuleState[] moduleStates = DriveTrainConstants.kDriveKinematics.toSwerveModuleStates(chassisSpeeds);
 
-        // Step 5 - Send "Swerve Module States" to Drivetrain Motors
+        // Step 5 - Send "Swerve Module States" Array to Drivetrain Motors
         m_drivetrainSubSys.setModuleStates(moduleStates);
+        */
     }
 
     // Called once the command ends or is interrupted.

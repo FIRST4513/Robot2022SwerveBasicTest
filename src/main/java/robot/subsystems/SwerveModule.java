@@ -28,6 +28,7 @@ public class SwerveModule {
 
     private final String swerveModuleID;
 
+
     // Constructor
     public SwerveModule(int driveMotorId, int turningMotorId, boolean driveMotorReversed, boolean turningMotorReversed,
                         int absoluteEncoderId, double absoluteEncoderOffset, boolean absoluteEncoderReversed) {
@@ -123,6 +124,18 @@ public class SwerveModule {
         return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad()));
     }
 
+    public void setsetSingleModule(double speed, double angle) {    
+        driveMotor.set(speed / DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond);
+        turningMotor.set(turningPidController.calculate(getAbsoluteEncoderRad(), Math.toRadians(angle)));
+        // Update smart dashboard
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Angle", angle);
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Speed", speed);
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Meters", getDrivePosition());
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Inches", Units.metersToInches(getDrivePosition()));
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Vel Meters/Sec", getDriveVelocity());
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Vel Ft/Sec", Units.metersToFeet(getDriveVelocity()));
+    }
+
     public void setDesiredState(SwerveModuleState state) {
         // Passed state provides - Wheel Velocity in Meters/Sec and Wheel Angle in Radians.
         if (Math.abs(state.speedMetersPerSecond) < 0.001) {
@@ -139,7 +152,7 @@ public class SwerveModule {
         // Update smart dashboard
         SmartDashboard.putString("Swerve[" + swerveModuleID + "] State", state.toString());
         SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Angle", state.angle.getDegrees());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Angle", state.speedMetersPerSecond);
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Speed", state.speedMetersPerSecond);
         SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Meters", getDrivePosition());
         SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Inches", Units.metersToInches(getDrivePosition()));
         SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Vel Meters/Sec", getDriveVelocity());
