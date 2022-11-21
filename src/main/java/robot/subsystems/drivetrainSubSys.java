@@ -159,13 +159,13 @@ public class drivetrainSubSys extends SubsystemBase {
     }
 
     public void setSingleModuleState(int canID, double speed, double angle) { 
-        // Angle in degrees     
+        // speed in meters/sec , Angle in degrees     
         if (canID == DriveTrainConstants.kFrontLeftDriveMotorPort){
             frontLeft.setsetSingleModule( speed, angle);
-        } else if (canID == DriveTrainConstants.kBackLeftDriveMotorPort){ 
-            backLeft.setsetSingleModule( speed, angle);
         } else if (canID == DriveTrainConstants.kFrontRightDriveMotorPort){ 
             frontRight.setsetSingleModule( speed, angle);
+        } else if (canID == DriveTrainConstants.kBackLeftDriveMotorPort){ 
+            backLeft.setsetSingleModule( speed, angle);
         } else if (canID == DriveTrainConstants.kBackRightDriveMotorPort){ 
             backRight.setsetSingleModule( speed, angle);}
     }
