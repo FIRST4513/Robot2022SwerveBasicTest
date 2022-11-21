@@ -11,6 +11,7 @@
 // ROBOTBUILDER TYPE: Command.
 
 package robot.commands;
+import robot.RobotContainer;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.Joystick;
@@ -24,11 +25,10 @@ import robot.subsystems.drivetrainSubSys;
 public class driveByJoystickCmd extends CommandBase {
 
     private final drivetrainSubSys m_drivetrainSubSys;
-    private final Joystick m_joystick;
+    private Joystick m_joystick;
 
-    public driveByJoystickCmd(drivetrainSubSys subsystem, Joystick driverJoy ) {
+    public driveByJoystickCmd(drivetrainSubSys subsystem) {
         m_drivetrainSubSys = subsystem;
-        m_joystick = driverJoy;
         addRequirements(m_drivetrainSubSys);
 
     }
@@ -36,7 +36,9 @@ public class driveByJoystickCmd extends CommandBase {
     // Called when the command is initially scheduled.
     @Override
     public void initialize() {
+        m_joystick = RobotContainer.getInstance().getdriverJoy();
     }
+
 
     // Called every time the scheduler runs while the command is scheduled.
     @Override

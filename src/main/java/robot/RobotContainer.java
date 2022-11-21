@@ -126,7 +126,7 @@ gyroReset.whenPressed(new driveGyroResetCmd( m_drivetrainSubSys ) ,true);
 
   // DriveByJoystick Commad Trigger - Button 1 (Whileheld)
   final JoystickButton driveByJoyBtn = new JoystickButton(driverJoy, 1);
-  driveByJoyBtn.whileHeld(new driveByJoystickCmd( m_drivetrainSubSys,  driverJoy) ,true);
+  driveByJoyBtn.whileHeld(new driveByJoystickCmd( m_drivetrainSubSys) ,true);
 
 
   }
