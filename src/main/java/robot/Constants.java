@@ -95,40 +95,40 @@ public final class Constants {
         public static final int     kFrontLeftDriveMotorPort = 1;
         public static final boolean kFrontLeftDriveEncoderReversed = true;
 
-        public static final int     kFrontLeftTurningMotorPort = 2;
+        public static final int     kFrontLeftTurningMotorPort = 5;
         public static final boolean kFrontLeftTurningEncoderReversed = true;
 
-        public static final int     kFrontLeftDriveAbsoluteEncoderPort = 3;
+        public static final int     kFrontLeftDriveAbsoluteEncoderPort = 9;
         public static final double  kFrontLeftDriveAbsoluteEncoderOffsetRad = -0.254;
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
 
         // Front Right Swerve Drive
-        public static final int     kFrontRightDriveMotorPort = 4;
+        public static final int     kFrontRightDriveMotorPort = 2;
         public static final boolean kFrontRightDriveEncoderReversed = true;
 
-        public static final int     kFrontRightTurningMotorPort = 5;
+        public static final int     kFrontRightTurningMotorPort = 6;
         public static final boolean kFrontRightTurningEncoderReversed = true;
 
-        public static final int     kFrontRightDriveAbsoluteEncoderPort = 6;
+        public static final int     kFrontRightDriveAbsoluteEncoderPort = 10;
         public static final double  kFrontRightDriveAbsoluteEncoderOffsetRad = -0.254;
         public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
 
         // Back Left Swerve Drive
-        public static final int     kBackLeftDriveMotorPort = 7;
+        public static final int     kBackLeftDriveMotorPort = 3;
         public static final boolean kBackLeftDriveEncoderReversed = true;
 
-        public static final int     kBackLeftTurningMotorPort = 8;
+        public static final int     kBackLeftTurningMotorPort = 7;
         public static final boolean kBackLeftTurningEncoderReversed = true;
 
-        public static final int     kBackLeftDriveAbsoluteEncoderPort = 9;
+        public static final int     kBackLeftDriveAbsoluteEncoderPort = 11;
         public static final double  kBackLeftDriveAbsoluteEncoderOffsetRad = -0.254;
         public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
 
         // Back Right Swerve Drive
-        public static final int     kBackRightDriveMotorPort = 10;
+        public static final int     kBackRightDriveMotorPort = 4;
         public static final boolean kBackRightDriveEncoderReversed = true;
 
-        public static final int     kBackRightTurningMotorPort = 11;
+        public static final int     kBackRightTurningMotorPort = 8;
         public static final boolean kBackRightTurningEncoderReversed = true;
 
         public static final int     kBackRightDriveAbsoluteEncoderPort = 12;
