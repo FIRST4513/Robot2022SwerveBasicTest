@@ -116,6 +116,14 @@ public class SwerveModule {
         return angle;
     }
 
+    public double getDriveWheelEncoderPosition(){
+        return turningMotor.get();
+    }
+
+    public double getAbsoluteEncoderPosition() {
+        return absoluteEncoder.getAbsolutePosition();
+    }
+
     public void resetEncoders() {
         driveMotor.setSelectedSensorPosition(0);        // Set Drive Motor Distance to Zero
         turningMotor.setSelectedSensorPosition(0);      // Not really Needed ????
@@ -157,12 +165,16 @@ public class SwerveModule {
     }
 
     public void updateShuffleBoard(){
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Angle", tgtAngle);
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Speed", tgtSpeed);
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Meters", getDrivePosition());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Inches", Units.metersToInches(getDrivePosition()));
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Vel Meters/Sec", getDriveVelocity());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Vel Ft/Sec", Units.metersToFeet(getDriveVelocity()));
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Tgt Angle", tgtAngle);
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Tgt Speed", tgtSpeed);
+
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Turn Encoder", getAbsoluteEncoderPosition());
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Turn Angle Degrees", getAbsoluteEncoderDegrees());
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Turn Angle Radians", getAbsoluteEncoderRad());
+
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Drive Encoder", getDriveWheelEncoderPosition());
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Drive Inches", Units.metersToInches(getDrivePosition()));
+        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Drive Meters", getDrivePosition());
     }
 
     public void stop() {
