@@ -79,13 +79,13 @@ public class driveByJoystickCmd extends CommandBase {
             m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, turningSpeed);
         } else if (m_joystick.getRawButton(4)){
             m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
-        } else if (m_joystick.getRawButton(4)){
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
         } else if (m_joystick.getRawButton(1)){
             m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, turningSpeed);
             m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, turningSpeed);
             m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, turningSpeed);
             m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
+        } else {
+            m_drivetrainSubSys.stopModules();
         }
 
         /*
