@@ -111,6 +111,10 @@ public class drivetrainSubSys extends SubsystemBase {
         SmartDashboard.putNumber("Robot Loc X Ft", Units.metersToFeet(getPoseMeters().getX()));
         SmartDashboard.putNumber("Robot Loc Y Ft", Units.metersToFeet(getPoseMeters().getY()));
         SmartDashboard.putString("Robot Kinematics", DriveTrainConstants.kDriveKinematics.toString());
+        frontLeft.updateShuffleBoard();
+        frontRight.updateShuffleBoard();
+        backLeft.updateShuffleBoard();
+        backRight.updateShuffleBoard();
     }
     
     @Override
