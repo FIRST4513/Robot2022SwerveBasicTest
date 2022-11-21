@@ -155,13 +155,13 @@ public class SwerveModule {
         // Power the Turning Motor - This uses a PID controller to lock in on Angle (Current Angle , Setpoint)
         turningMotor.set(turningPidController.calculate(getAbsoluteEncoderRad(), state.angle.getRadians()));
         // Update smart dashboard
-        SmartDashboard.putString("Swerve[" + swerveModuleID + "] State", state.toString());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Angle", state.angle.getDegrees());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Speed", state.speedMetersPerSecond);
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Meters", getDrivePosition());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Dist Inches", Units.metersToInches(getDrivePosition()));
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Vel Meters/Sec", getDriveVelocity());
-        SmartDashboard.putNumber("Swerve[" + swerveModuleID + "] Vel Ft/Sec", Units.metersToFeet(getDriveVelocity()));
+        SmartDashboard.putString( swerveModuleID + " State", state.toString());
+        SmartDashboard.putNumber( swerveModuleID + " Angle", state.angle.getDegrees());
+        SmartDashboard.putNumber( swerveModuleID + " Speed", state.speedMetersPerSecond);
+        SmartDashboard.putNumber( swerveModuleID + " Dist Meters", getDrivePosition());
+        SmartDashboard.putNumber( swerveModuleID + " Dist Inches", Units.metersToInches(getDrivePosition()));
+        SmartDashboard.putNumber( swerveModuleID + " Vel Meters/Sec", getDriveVelocity());
+        SmartDashboard.putNumber( swerveModuleID + " Vel Ft/Sec", Units.metersToFeet(getDriveVelocity()));
     }
 
     public void updateShuffleBoard(){
