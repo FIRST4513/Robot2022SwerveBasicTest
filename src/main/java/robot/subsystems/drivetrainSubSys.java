@@ -105,7 +105,8 @@ public class drivetrainSubSys extends SubsystemBase {
     public void periodic() {
         odometer.update(getGyroHeadingRotation2d(), frontLeft.getState(), frontRight.getState(), backLeft.getState(),
                 backRight.getState());
-        // Update Smartdash
+        updateShuffleboard();
+
         SmartDashboard.putNumber("Robot Heading Degrees", getHeadingDegrees());
         SmartDashboard.putString("Robot Loc Meters", getPoseMeters().getTranslation().toString());
         SmartDashboard.putNumber("Robot Loc X Ft", Units.metersToFeet(getPoseMeters().getX()));
@@ -153,7 +154,6 @@ public class drivetrainSubSys extends SubsystemBase {
         odometer.resetPosition(pose, getGyroHeadingRotation2d());
     }
 
-
     public void stopModules() {
         // Should this be done through setModuleStates method ?????
         frontLeft.stop();
@@ -184,6 +184,18 @@ public class drivetrainSubSys extends SubsystemBase {
         frontRight.setDesiredState(desiredStates[1]);
         backLeft.setDesiredState(desiredStates[2]);
         backRight.setDesiredState(desiredStates[3]);
+    }
+
+    public void updateShuffleboard(){
+        SmartDashboard.putNumber("Robot Heading Degrees", getHeadingDegrees());
+        SmartDashboard.putString("Robot Loc Meters", getPoseMeters().getTranslation().toString());
+        SmartDashboard.putNumber("Robot Loc X Ft", Units.metersToFeet(getPoseMeters().getX()));
+        SmartDashboard.putNumber("Robot Loc Y Ft", Units.metersToFeet(getPoseMeters().getY()));
+        SmartDashboard.putString("Robot Kinematics", DriveTrainConstants.kDriveKinematics.toString());
+        frontLeft.updateShuffleBoard();
+        frontRight.updateShuffleBoard();
+        backLeft.updateShuffleBoard();
+        backRight.updateShuffleBoard();
     }
 }
 
