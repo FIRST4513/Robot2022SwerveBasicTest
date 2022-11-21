@@ -124,7 +124,8 @@ public class SwerveModule {
         return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad()));
     }
 
-    public void setsetSingleModule(double speed, double angle) {    
+    public void setsetSingleModule(double speed, double angle) {   
+        // speed in Meters/sec , angle in Degrees   
         driveMotor.set(speed / DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond);
         turningMotor.set(turningPidController.calculate(getAbsoluteEncoderRad(), Math.toRadians(angle)));
         // Update smart dashboard

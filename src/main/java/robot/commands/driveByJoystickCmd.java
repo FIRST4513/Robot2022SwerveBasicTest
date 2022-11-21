@@ -48,42 +48,43 @@ public class driveByJoystickCmd extends CommandBase {
         // Step 1a) Get joystick inputs from individual axis
             double xSpeed = m_joystick.getX();
             double ySpeed = m_joystick.getY();
-            double turningSpeed = m_joystick.getTwist();
+            double wheelAngle = m_joystick.getTwist();
             double throttle = (-m_joystick.getThrottle()/2) + 0.5; // convert from ( -1:1 ) to ( 0:1 ) 
 
         // Step 1b) Apply deadband (in case joystick doesn't return fully to Zero position)
-            xSpeed = Math.abs(xSpeed) > OIConstants.kDeadband ? xSpeed : 0.0;
-            ySpeed = Math.abs(ySpeed) > OIConstants.kDeadband ? ySpeed : 0.0;
-            turningSpeed = Math.abs(turningSpeed) > OIConstants.kDeadband ? turningSpeed : 0.0;
+            xSpeed = deadBand(xSpeed);  // Not Used in this program
+            ySpeed = deadBand(ySpeed);
+            wheelAngle = deadBand(wheelAngle);
 
         // Step 1c) Limit Speeds based on throttle setting
-            xSpeed = xSpeed * throttle;
+            xSpeed = xSpeed * throttle;  // Not Used in this program
             ySpeed = ySpeed * throttle;
-            turningSpeed = turningSpeed * throttle;
-            // If Using Xbox Controller with no throttle use limiting constants from Constants
-            //xSpeed = xSpeed * DriveTrainConstants.kTeleDriveThrottle;
-            //ySpeed = ySpeed * DriveTrainConstants.kTeleDriveThrottle;
-            //turningSpeed = turningSpeed * DriveTrainConstants.kTeleDriveThrottle;
+            //wheelAngle = wheelAngle * throttle; // 
 
-        // Step 2 - Convert Joystick values to Field Velocity (Meters/Sec)
-        xSpeed = xSpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
+        // Step 2a - Convert Joystick values to Field Velocity (Meters/Sec)
+        xSpeed = xSpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;  // Not Used in this program
         ySpeed = ySpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
-        turningSpeed = turningSpeed * DriveTrainConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
+
+        // Step 2b - Convert Joystick angle -1 to +1  into 0 to 360
+        wheelAngle = (wheelAngle * 180.0);
+        if (wheelAngle < 0.0 ){
+            wheelAngle = wheelAngle + 360.0;
+        }
 
         // Send raw data to swerve module (For Testing Purposes)
         if (m_joystick.getRawButton(5)){
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, wheelAngle);
         } else if (m_joystick.getRawButton(6)){
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, wheelAngle);
         } else if (m_joystick.getRawButton(3)){
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, wheelAngle);
         } else if (m_joystick.getRawButton(4)){
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, wheelAngle);
         } else if (m_joystick.getRawButton(1)){
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, turningSpeed);
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, turningSpeed);
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, turningSpeed);
-            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, turningSpeed);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, wheelAngle);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, wheelAngle);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, wheelAngle);
+            m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, wheelAngle);
         } else {
             m_drivetrainSubSys.stopModules();
         }
@@ -94,10 +95,10 @@ public class driveByJoystickCmd extends CommandBase {
         if(  m_joystick.getRawButton(OIConstants.kDriverFieldOrientedButtonIdx)){
             // Field Relative
             chassisSpeeds = ChassisSpeeds.fromFieldRelativeSpeeds(
-                    xSpeed, ySpeed, turningSpeed, m_drivetrainSubSys.getGyroHeadingRotation2d());
+                    xSpeed, ySpeed, wheelAngle, m_drivetrainSubSys.getGyroHeadingRotation2d());
         } else {
             // Chassis Relative
-            chassisSpeeds = new ChassisSpeeds(xSpeed, ySpeed, turningSpeed);
+            chassisSpeeds = new ChassisSpeeds(xSpeed, ySpeed, wheelAngle);
         }
 
         // Step 4 - Create a "Swerve Module States" Array object from the "chassis Speeds" object
@@ -121,6 +122,20 @@ public class driveByJoystickCmd extends CommandBase {
     public boolean isFinished() {
         return false;
     }
+
+    public double deadBand(double value){
+        // Deadband Calculation
+        if((value <=  OIConstants.kDeadband) && (value >= - OIConstants.kDeadband)){
+            return 0;
+        }
+        if (value > 0) {
+            value=(value - OIConstants.kDeadband) * (1 + OIConstants.kDeadband);		// Scale Yvalue smoothly to + 1
+        } else {
+            value = - (-value - OIConstants.kDeadband) * (1 + OIConstants.kDeadband);	// Scale Yvalue smoothly to -1
+        }
+        return value;
+    }
+
 
     @Override
     public boolean runsWhenDisabled() {
