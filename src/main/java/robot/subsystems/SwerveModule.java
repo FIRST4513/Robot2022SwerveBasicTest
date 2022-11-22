@@ -62,7 +62,7 @@ public class SwerveModule {
         absoluteEncoder = new CANCoder(absoluteEncoderId);
 
         CANCoderConfiguration config = new CANCoderConfiguration(); 
-        config.sensorCoefficient = 2 * Math.PI / 4096.0;
+        config.sensorCoefficient = 2 * Math.PI / 4096.0;    // To Return Radians
         config.unitString= "rad";
         config.sensorTimeBase = SensorTimeBase.PerSecond;
         absoluteEncoder.configAllSettings(config);  // Send the config to the Encoder
