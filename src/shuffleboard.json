@@ -1,0 +1,575 @@
+{
+  "tabPane": [
+    {
+      "title": "Drivetrain",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "SmartDashboard/",
+      "widgetPane": {
+        "gridSize": 64.0,
+        "showGrid": true,
+        "hgap": 10.0,
+        "vgap": 10.0,
+        "titleType": 0,
+        "tiles": {
+          "14,6": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "ComboBox Chooser",
+              "_source0": "network_table:///SmartDashboard/Auto Mode",
+              "_title": "Auto Mode"
+            }
+          },
+          "2,7": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/driveBtn",
+              "_title": "driveBtn"
+            }
+          },
+          "2,5": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/clearEncodersCmd",
+              "_title": "clearEncodersCmd"
+            }
+          },
+          "2,1": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Rot",
+              "_title": "Rot"
+            }
+          },
+          "18,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/LLCamModeDriverOnCmd",
+              "_title": "LLCamModeDriverOnCmd"
+            }
+          },
+          "2,2": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Pwr",
+              "_title": "Pwr"
+            }
+          },
+          "2,3": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Gyro Rate",
+              "_title": "Gyro Rate"
+            }
+          },
+          "18,5": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Enc-Right Cnt",
+              "_title": "Enc-Right Cnt"
+            }
+          },
+          "4,7": {
+            "size": [
+              8,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Current Field Pose2d",
+              "_title": "Current Field Pose2d"
+            }
+          },
+          "2,4": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Velocity Inches",
+              "_title": "Velocity Inches"
+            }
+          },
+          "14,0": {
+            "size": [
+              3,
+              5
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Left Motor",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Enc-Left Dist Inches",
+                  "_title": "Enc-Left Dist Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Enc-Left Cnt",
+                  "_title": "Enc-Left Cnt"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Enc-Left Dist Meters",
+                  "_title": "Enc-Left Dist Meters"
+                }
+              ]
+            }
+          },
+          "5,0": {
+            "size": [
+              3,
+              7
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Pose",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Xpos Inches",
+                  "_title": "Robot Xpos Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Angle",
+                  "_title": "Robot Angle"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Gyro-Rot2d",
+                  "_title": "Gyro-Rot2d"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Velocity Meters",
+                  "_title": "Velocity Meters"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Gyro Yaw",
+                  "_title": "Gyro Yaw"
+                },
+                {
+                  "_type": "Command",
+                  "_source0": "network_table:///SmartDashboard/resetGyroCmd",
+                  "_title": "resetGyroCmd"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Enc-Avg Dist Meters",
+                  "_title": "Enc-Avg Dist Meters"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Enc-Avg Dist Inches",
+                  "_title": "Enc-Avg Dist Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Enc-Right Dist Inches",
+                  "_title": "Enc-Right Dist Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Ypos Inches",
+                  "_title": "Robot Ypos Inches"
+                }
+              ]
+            }
+          },
+          "11,0": {
+            "size": [
+              3,
+              5
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Right Motor",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Enc-Right Dist Meters",
+                  "_title": "Enc-Right Dist Meters"
+                }
+              ]
+            }
+          },
+          "11,6": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Command",
+              "_source0": "network_table:///SmartDashboard/buildShuffleboardCmd",
+              "_title": "/SmartDashboard/buildShuffleboardCmd"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Elev",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 64.0,
+        "showGrid": true,
+        "hgap": 10.0,
+        "vgap": 10.0,
+        "titleType": 0,
+        "tiles": {
+          "12,2": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Claw Servo Value",
+              "_title": "/SmartDashboard/Claw Servo Value"
+            }
+          },
+          "15,0": {
+            "size": [
+              4,
+              8
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Elevator",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Elev Position",
+                  "_title": "/SmartDashboard/Elev Position"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Elev Height",
+                  "_title": "/SmartDashboard/Elev Height"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Elev Enc Cnt",
+                  "_title": "/SmartDashboard/Elev Enc Cnt"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Elev Speed",
+                  "_title": "/SmartDashboard/Elev Speed"
+                },
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///SmartDashboard/Elev At Bottom",
+                  "_title": "/SmartDashboard/Elev At Bottom",
+                  "Colors/Color when true": "#7CFC00FF",
+                  "Colors/Color when false": "#8B0000FF"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///LiveWindow/ElevSubSys/ElevMtr/Value",
+                  "_title": "/LiveWindow/ElevSubSys/ElevMtr/Value"
+                }
+              ]
+            }
+          },
+          "12,3": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Slider Servo Value",
+              "_title": "/SmartDashboard/Slider Servo Value"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Swerve Drive Basic Test",
+      "autoPopulate": false,
+      "autoPopulatePrefix": "",
+      "widgetPane": {
+        "gridSize": 64.0,
+        "showGrid": true,
+        "hgap": 16.0,
+        "vgap": 16.0,
+        "titleType": 0,
+        "tiles": {
+          "0,0": {
+            "size": [
+              4,
+              6
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Front Left",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Left Tgt Speed",
+                  "_title": "/SmartDashboard/Front Left Tgt Speed"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Left Drive Encoder",
+                  "_title": "/SmartDashboard/Front Left Drive Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Left Drive Inches",
+                  "_title": "/SmartDashboard/Front Left Drive Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Left Tgt Angle",
+                  "_title": "/SmartDashboard/Front Left Tgt Angle"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Left Turn Angle Degrees",
+                  "_title": "/SmartDashboard/Front Left Turn Angle Degrees"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Left Turn Encoder",
+                  "_title": "/SmartDashboard/Front Left Turn Encoder"
+                }
+              ]
+            }
+          },
+          "4,0": {
+            "size": [
+              4,
+              6
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Front Right",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Right Tgt Speed",
+                  "_title": "/SmartDashboard/Front Right Tgt Speed"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Right Drive Encoder",
+                  "_title": "/SmartDashboard/Front Right Drive Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Right Drive Inches",
+                  "_title": "/SmartDashboard/Front Right Drive Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Right Tgt Angle",
+                  "_title": "/SmartDashboard/Front Right Tgt Angle"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Right Turn Angle Degrees",
+                  "_title": "/SmartDashboard/Front Right Turn Angle Degrees"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Right Turn Encoder",
+                  "_title": "/SmartDashboard/Front Right Turn Encoder"
+                }
+              ]
+            }
+          },
+          "8,0": {
+            "size": [
+              4,
+              6
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Back Left",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Left Tgt Speed",
+                  "_title": "/SmartDashboard/Back Left Tgt Speed"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Left Drive Encoder",
+                  "_title": "/SmartDashboard/Back Left Drive Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Left Drive Inches",
+                  "_title": "/SmartDashboard/Back Left Drive Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Left Tgt Angle",
+                  "_title": "/SmartDashboard/Back Left Tgt Angle"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Left Turn Angle Degrees",
+                  "_title": "/SmartDashboard/Back Left Turn Angle Degrees"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Left Turn Encoder",
+                  "_title": "/SmartDashboard/Back Left Turn Encoder"
+                }
+              ]
+            }
+          },
+          "12,0": {
+            "size": [
+              4,
+              6
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Back Right",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right Tgt Speed",
+                  "_title": "/SmartDashboard/Back Right Tgt Speed"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right Drive Encoder",
+                  "_title": "/SmartDashboard/Back Right Drive Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right Drive Inches",
+                  "_title": "/SmartDashboard/Back Right Drive Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right Tgt Angle",
+                  "_title": "/SmartDashboard/Back Right Tgt Angle"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right Turn Angle Degrees",
+                  "_title": "/SmartDashboard/Back Right Turn Angle Degrees"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right Turn Encoder",
+                  "_title": "/SmartDashboard/Back Right Turn Encoder"
+                }
+              ]
+            }
+          },
+          "16,0": {
+            "size": [
+              4,
+              7
+            ],
+            "content": {
+              "_type": "List Layout",
+              "_title": "Drivetrain",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Angle",
+                  "_title": "/SmartDashboard/Robot Angle"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Heading Degrees",
+                  "_title": "/SmartDashboard/Robot Heading Degrees"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Loc X Ft",
+                  "_title": "/SmartDashboard/Robot Loc X Ft"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Loc Y Ft",
+                  "_title": "/SmartDashboard/Robot Loc Y Ft"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Xpos Inches",
+                  "_title": "/SmartDashboard/Robot Xpos Inches"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Robot Ypos Inches",
+                  "_title": "/SmartDashboard/Robot Ypos Inches"
+                }
+              ]
+            }
+          },
+          "0,6": {
+            "size": [
+              8,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Robot Kinematics",
+              "_title": "/SmartDashboard/Robot Kinematics"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "windowGeometry": {
+    "x": 10.666666984558105,
+    "y": 0.0,
+    "width": 1707.111083984375,
+    "height": 806.2222290039062
+  }
+}
