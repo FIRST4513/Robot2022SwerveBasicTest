@@ -169,6 +169,7 @@ public class SwerveModule {
         SmartDashboard.putNumber( swerveModuleID + " Tgt Speed", tgtSpeed);
 
         SmartDashboard.putNumber( swerveModuleID + " Turn Encoder", getAbsoluteEncoderPosition());
+        SmartDashboard.putNumber( swerveModuleID + " Raw Encoder Angle", absoluteEncoder.getPosition());
         SmartDashboard.putNumber( swerveModuleID + " Turn Angle Degrees", getAbsoluteEncoderDegrees());
         SmartDashboard.putNumber( swerveModuleID + " Turn Angle Radians", getAbsoluteEncoderRad());
 

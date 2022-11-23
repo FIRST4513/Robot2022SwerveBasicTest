@@ -99,18 +99,18 @@ public final class Constants {
         public static final boolean kFrontLeftTurningEncoderReversed = true;
 
         public static final int     kFrontLeftDriveAbsoluteEncoderPort = 9;
-        public static final double  kFrontLeftDriveAbsoluteEncoderOffsetRad = -0.254;
+        public static final double  kFrontLeftDriveAbsoluteEncoderOffsetRad = -0.019;
         public static final boolean kFrontLeftDriveAbsoluteEncoderReversed = false;
 
         // Front Right Swerve Drive
         public static final int     kFrontRightDriveMotorPort = 2;
-        public static final boolean kFrontRightDriveEncoderReversed = true;
+        public static final boolean kFrontRightDriveEncoderReversed = false;
 
         public static final int     kFrontRightTurningMotorPort = 6;
         public static final boolean kFrontRightTurningEncoderReversed = true;
 
         public static final int     kFrontRightDriveAbsoluteEncoderPort = 10;
-        public static final double  kFrontRightDriveAbsoluteEncoderOffsetRad = -0.254;
+        public static final double  kFrontRightDriveAbsoluteEncoderOffsetRad = -0.007;
         public static final boolean kFrontRightDriveAbsoluteEncoderReversed = false;
 
         // Back Left Swerve Drive
@@ -121,18 +121,18 @@ public final class Constants {
         public static final boolean kBackLeftTurningEncoderReversed = true;
 
         public static final int     kBackLeftDriveAbsoluteEncoderPort = 11;
-        public static final double  kBackLeftDriveAbsoluteEncoderOffsetRad = -0.254;
+        public static final double  kBackLeftDriveAbsoluteEncoderOffsetRad = -0.009;
         public static final boolean kBackLeftDriveAbsoluteEncoderReversed = false;
 
         // Back Right Swerve Drive
         public static final int     kBackRightDriveMotorPort = 4;
-        public static final boolean kBackRightDriveEncoderReversed = true;
+        public static final boolean kBackRightDriveEncoderReversed = false;
 
         public static final int     kBackRightTurningMotorPort = 8;
         public static final boolean kBackRightTurningEncoderReversed = true;
 
         public static final int     kBackRightDriveAbsoluteEncoderPort = 12;
-        public static final double  kBackRightDriveAbsoluteEncoderOffsetRad = -0.254;
+        public static final double  kBackRightDriveAbsoluteEncoderOffsetRad = 0.026;
         public static final boolean kBackRightDriveAbsoluteEncoderReversed = false;
 
         // The maximum velocity of the robot in meters per second.

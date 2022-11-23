@@ -339,7 +339,7 @@
           "0,0": {
             "size": [
               4,
-              6
+              7
             ],
             "content": {
               "_type": "List Layout",
@@ -375,6 +375,11 @@
                   "_type": "Text View",
                   "_source0": "network_table:///SmartDashboard/Front Left Turn Encoder",
                   "_title": "/SmartDashboard/Front Left Turn Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Left Raw Encoder Angle",
+                  "_title": "SmartDashboard/Front Left Raw Encoder Angle"
                 }
               ]
             }
@@ -382,7 +387,7 @@
           "4,0": {
             "size": [
               4,
-              6
+              7
             ],
             "content": {
               "_type": "List Layout",
@@ -418,6 +423,11 @@
                   "_type": "Text View",
                   "_source0": "network_table:///SmartDashboard/Front Right Turn Encoder",
                   "_title": "/SmartDashboard/Front Right Turn Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Front Right Raw Encoder Angle",
+                  "_title": "SmartDashboard/Front Right Raw Encoder Angle"
                 }
               ]
             }
@@ -425,7 +435,7 @@
           "8,0": {
             "size": [
               4,
-              6
+              7
             ],
             "content": {
               "_type": "List Layout",
@@ -461,6 +471,11 @@
                   "_type": "Text View",
                   "_source0": "network_table:///SmartDashboard/Back Left Turn Encoder",
                   "_title": "/SmartDashboard/Back Left Turn Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Left Raw Encoder Angle",
+                  "_title": "SmartDashboard/Back Left Raw Encoder Angle"
                 }
               ]
             }
@@ -468,7 +483,7 @@
           "12,0": {
             "size": [
               4,
-              6
+              7
             ],
             "content": {
               "_type": "List Layout",
@@ -504,6 +519,11 @@
                   "_type": "Text View",
                   "_source0": "network_table:///SmartDashboard/Back Right Turn Encoder",
                   "_title": "/SmartDashboard/Back Right Turn Encoder"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right Raw Encoder Angle",
+                  "_title": "SmartDashboard/Back Right Raw Encoder Angle"
                 }
               ]
             }
@@ -551,7 +571,7 @@
               ]
             }
           },
-          "0,6": {
+          "3,7": {
             "size": [
               8,
               1
@@ -567,9 +587,9 @@
     }
   ],
   "windowGeometry": {
-    "x": 10.666666984558105,
+    "x": -3.5,
     "y": 0.0,
-    "width": 1707.111083984375,
-    "height": 806.2222290039062
+    "width": 1924.0,
+    "height": 806.5
   }
 }
