@@ -336,7 +336,7 @@
         "vgap": 16.0,
         "titleType": 0,
         "tiles": {
-          "0,0": {
+          "8,0": {
             "size": [
               4,
               7
@@ -348,142 +348,103 @@
               "_children": [
                 {
                   "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Left Tgt Speed",
-                  "_title": "/SmartDashboard/Front Left Tgt Speed"
+                  "_source0": "network_table:///SmartDashboard/Front LeftPID Absolute Encoder Rad",
+                  "_title": "/SmartDashboard/Front LeftPID Absolute Encoder Rad"
                 },
                 {
                   "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Left Drive Encoder",
-                  "_title": "/SmartDashboard/Front Left Drive Encoder"
+                  "_source0": "network_table:///SmartDashboard/Front LeftPID Tgt Angle Degrees",
+                  "_title": "/SmartDashboard/Front LeftPID Tgt Angle Degrees"
                 },
                 {
                   "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Left Drive Inches",
-                  "_title": "/SmartDashboard/Front Left Drive Inches"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Left Tgt Angle",
-                  "_title": "/SmartDashboard/Front Left Tgt Angle"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Left Turn Angle Degrees",
-                  "_title": "/SmartDashboard/Front Left Turn Angle Degrees"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Left Turn Encoder",
-                  "_title": "/SmartDashboard/Front Left Turn Encoder"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Left Raw Encoder Angle",
-                  "_title": "SmartDashboard/Front Left Raw Encoder Angle"
+                  "_source0": "network_table:///SmartDashboard/Front LeftPID Tgt Angle Rad",
+                  "_title": "SmartDashboard/Front LeftPID Tgt Angle Rad"
                 }
               ]
             }
           },
-          "4,0": {
+          "18,0": {
             "size": [
-              4,
-              7
+              3,
+              1
             ],
             "content": {
-              "_type": "List Layout",
-              "_title": "Front Right",
-              "Layout/Label position": "BOTTOM",
-              "_children": [
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Right Tgt Speed",
-                  "_title": "/SmartDashboard/Front Right Tgt Speed"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Right Drive Encoder",
-                  "_title": "/SmartDashboard/Front Right Drive Encoder"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Right Drive Inches",
-                  "_title": "/SmartDashboard/Front Right Drive Inches"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Right Tgt Angle",
-                  "_title": "/SmartDashboard/Front Right Tgt Angle"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Right Turn Angle Degrees",
-                  "_title": "/SmartDashboard/Front Right Turn Angle Degrees"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Right Turn Encoder",
-                  "_title": "/SmartDashboard/Front Right Turn Encoder"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Front Right Raw Encoder Angle",
-                  "_title": "SmartDashboard/Front Right Raw Encoder Angle"
-                }
-              ]
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Joy Wheel Angle Degree",
+              "_title": "SmartDashboard/Joy Wheel Angle Degree"
             }
           },
-          "8,0": {
+          "18,1": {
             "size": [
-              4,
-              7
+              3,
+              1
             ],
             "content": {
-              "_type": "List Layout",
-              "_title": "Back Left",
-              "Layout/Label position": "BOTTOM",
-              "_children": [
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Left Tgt Speed",
-                  "_title": "/SmartDashboard/Back Left Tgt Speed"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Left Drive Encoder",
-                  "_title": "/SmartDashboard/Back Left Drive Encoder"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Left Drive Inches",
-                  "_title": "/SmartDashboard/Back Left Drive Inches"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Left Tgt Angle",
-                  "_title": "/SmartDashboard/Back Left Tgt Angle"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Left Turn Angle Degrees",
-                  "_title": "/SmartDashboard/Back Left Turn Angle Degrees"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Left Turn Encoder",
-                  "_title": "/SmartDashboard/Back Left Turn Encoder"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Left Raw Encoder Angle",
-                  "_title": "SmartDashboard/Back Left Raw Encoder Angle"
-                }
-              ]
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Joy Wheel Angle Radians",
+              "_title": "SmartDashboard/Joy Wheel Angle Radians"
+            }
+          },
+          "18,2": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Joy Drive ySpeed Raw 1",
+              "_title": "SmartDashboard/Joy Drive ySpeed Raw 1"
+            }
+          },
+          "18,3": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Joy Drive ySpeed Raw 2",
+              "_title": "SmartDashboard/Joy Drive ySpeed Raw 2"
+            }
+          },
+          "18,4": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Joy Drive ySpeed Raw 3",
+              "_title": "SmartDashboard/Joy Drive ySpeed Raw 3"
+            }
+          },
+          "18,5": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Joy Drive ySpeed Meters",
+              "_title": "SmartDashboard/Joy Drive ySpeed Meters"
+            }
+          },
+          "21,2": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Joy Drive xSpeed Raw 1",
+              "_title": "SmartDashboard/Joy Drive xSpeed Raw 1"
             }
           },
           "12,0": {
             "size": [
-              4,
-              7
+              5,
+              8
             ],
             "content": {
               "_type": "List Layout",
@@ -492,94 +453,35 @@
               "_children": [
                 {
                   "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right PID Absolute Encode Raw Degrees",
+                  "_title": "SmartDashboard/Back Right PID Absolute Encode Raw Degrees"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right PID Absolute Encoder Raw",
+                  "_title": "SmartDashboard/Back Right PID Absolute Encoder Raw"
+                },
+                {
+                  "_type": "Text View",
+                  "_source0": "network_table:///SmartDashboard/Back Right PID Corrected Absolute Encoder Rad",
+                  "_title": "SmartDashboard/Back Right PID Corrected Absolute Encoder Rad"
+                },
+                {
+                  "_type": "Text View",
                   "_source0": "network_table:///SmartDashboard/Back Right Tgt Speed",
-                  "_title": "/SmartDashboard/Back Right Tgt Speed"
+                  "_title": "SmartDashboard/Back Right Tgt Speed"
                 },
                 {
                   "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Right Drive Encoder",
-                  "_title": "/SmartDashboard/Back Right Drive Encoder"
+                  "_source0": "network_table:///SmartDashboard/Back Right PID Tgt Angle Degrees",
+                  "_title": "SmartDashboard/Back Right PID Tgt Angle Degrees"
                 },
                 {
                   "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Right Drive Inches",
-                  "_title": "/SmartDashboard/Back Right Drive Inches"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Right Tgt Angle",
-                  "_title": "/SmartDashboard/Back Right Tgt Angle"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Right Turn Angle Degrees",
-                  "_title": "/SmartDashboard/Back Right Turn Angle Degrees"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Right Turn Encoder",
-                  "_title": "/SmartDashboard/Back Right Turn Encoder"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Back Right Raw Encoder Angle",
-                  "_title": "SmartDashboard/Back Right Raw Encoder Angle"
+                  "_source0": "network_table:///SmartDashboard/Back Right PID Tgt Angle Rad",
+                  "_title": "SmartDashboard/Back Right PID Tgt Angle Rad"
                 }
               ]
-            }
-          },
-          "16,0": {
-            "size": [
-              4,
-              7
-            ],
-            "content": {
-              "_type": "List Layout",
-              "_title": "Drivetrain",
-              "Layout/Label position": "BOTTOM",
-              "_children": [
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Robot Angle",
-                  "_title": "/SmartDashboard/Robot Angle"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Robot Heading Degrees",
-                  "_title": "/SmartDashboard/Robot Heading Degrees"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Robot Loc X Ft",
-                  "_title": "/SmartDashboard/Robot Loc X Ft"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Robot Loc Y Ft",
-                  "_title": "/SmartDashboard/Robot Loc Y Ft"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Robot Xpos Inches",
-                  "_title": "/SmartDashboard/Robot Xpos Inches"
-                },
-                {
-                  "_type": "Text View",
-                  "_source0": "network_table:///SmartDashboard/Robot Ypos Inches",
-                  "_title": "/SmartDashboard/Robot Ypos Inches"
-                }
-              ]
-            }
-          },
-          "3,7": {
-            "size": [
-              8,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Robot Kinematics",
-              "_title": "/SmartDashboard/Robot Kinematics"
             }
           }
         }
@@ -587,9 +489,9 @@
     }
   ],
   "windowGeometry": {
-    "x": -3.5,
-    "y": 0.0,
-    "width": 1924.0,
-    "height": 806.5
+    "x": -6.5,
+    "y": -6.5,
+    "width": 1933.0,
+    "height": 1053.0
   }
 }

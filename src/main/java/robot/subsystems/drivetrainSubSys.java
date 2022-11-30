@@ -163,7 +163,7 @@ public class drivetrainSubSys extends SubsystemBase {
     }
 
     public void setSingleModuleState(int canID, double speed, double angle) { 
-        // speed in Meters/sec , angle in Degrees     
+        // speed in Meters/sec , angle in Degrees -180 Full CW 0 to +180 Full CCW     
         if (canID == DriveTrainConstants.kFrontLeftDriveMotorPort){
             frontLeft.setSingleModule( speed, angle);
         } else if (canID == DriveTrainConstants.kFrontRightDriveMotorPort){ 
@@ -187,11 +187,11 @@ public class drivetrainSubSys extends SubsystemBase {
     }
 
     public void updateShuffleboard(){
-        SmartDashboard.putNumber("Robot Heading Degrees", getHeadingDegrees());
-        SmartDashboard.putString("Robot Loc Meters", getPoseMeters().getTranslation().toString());
-        SmartDashboard.putNumber("Robot Loc X Ft", Units.metersToFeet(getPoseMeters().getX()));
-        SmartDashboard.putNumber("Robot Loc Y Ft", Units.metersToFeet(getPoseMeters().getY()));
-        SmartDashboard.putString("Robot Kinematics", DriveTrainConstants.kDriveKinematics.toString());
+        // SmartDashboard.putNumber("Robot Heading Degrees", getHeadingDegrees());
+        // SmartDashboard.putString("Robot Loc Meters", getPoseMeters().getTranslation().toString());
+        // SmartDashboard.putNumber("Robot Loc X Ft", Units.metersToFeet(getPoseMeters().getX()));
+        // SmartDashboard.putNumber("Robot Loc Y Ft", Units.metersToFeet(getPoseMeters().getY()));
+        // SmartDashboard.putString("Robot Kinematics", DriveTrainConstants.kDriveKinematics.toString());
         frontLeft.updateShuffleBoard();
         frontRight.updateShuffleBoard();
         backLeft.updateShuffleBoard();

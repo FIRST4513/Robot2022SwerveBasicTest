@@ -15,6 +15,8 @@ import robot.RobotContainer;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import robot.Constants.DriveTrainConstants;
 import robot.Constants.OIConstants;
@@ -47,29 +49,38 @@ public class driveByJoystickCmd extends CommandBase {
         // Step 1 - Get joystick Inputs
         // Step 1a) Get joystick inputs from individual axis
             double xSpeed = m_joystick.getX();
-            double ySpeed = m_joystick.getY();
+            double ySpeed = -m_joystick.getY();
             double wheelAngle = m_joystick.getTwist();
-            double throttle = (-m_joystick.getThrottle()/2) + 0.5; // convert from ( -1:1 ) to ( 0:1 ) 
 
+            double throttle = (-m_joystick.getThrottle()/2) + 0.5; // convert from ( -1:1 ) to ( 0:1 ) 
+            SmartDashboard.putNumber("Joy Drive ySpeed Raw 1", ySpeed);
+            SmartDashboard.putNumber("Joy Drive xSpeed Raw 1", xSpeed);
         // Step 1b) Apply deadband (in case joystick doesn't return fully to Zero position)
             xSpeed = deadBand(xSpeed);  // Not Used in this program
             ySpeed = deadBand(ySpeed);
             wheelAngle = deadBand(wheelAngle);
+            SmartDashboard.putNumber("Joy Drive ySpeed Raw 2", ySpeed);
 
         // Step 1c) Limit Speeds based on throttle setting
             xSpeed = xSpeed * throttle;  // Not Used in this program
             ySpeed = ySpeed * throttle;
-            //wheelAngle = wheelAngle * throttle; // 
+            //wheelAngle = wheelAngle * throttle; //
+            SmartDashboard.putNumber("Joy Drive ySpeed Raw 3", ySpeed);
 
         // Step 2a - Convert Joystick values to Field Velocity (Meters/Sec)
         xSpeed = xSpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;  // Not Used in this program
         ySpeed = ySpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
 
-        // Step 2b - Convert Joystick angle -1 to +1  into 0 to 360
-        wheelAngle = (wheelAngle * 180.0);
-        if (wheelAngle < 0.0 ){
-            wheelAngle = wheelAngle + 360.0;
-        }
+        SmartDashboard.putNumber("Joy Drive ySpeed Meters", ySpeed);
+        
+        // Step 2b - Convert Joystick angle -1 to +1  into -180 cw to 180 ccw
+        wheelAngle = (wheelAngle * -180.0);
+        // if (wheelAngle < 0.0 ){
+        //     wheelAngle = wheelAngle + 360.0;
+        // }
+        
+        SmartDashboard.putNumber("Joy Wheel Angle Degree", wheelAngle);
+        SmartDashboard.putNumber("Joy Wheel Angle Radians", Math.toRadians(wheelAngle));
 
         // Send raw data to swerve module (For Testing Purposes)
         if (m_joystick.getRawButton(5)){

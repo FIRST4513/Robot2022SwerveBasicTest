@@ -1,4 +1,4 @@
-package robot.subsystems;
+ package robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.sensors.CANCoder;
@@ -61,7 +61,8 @@ public class SwerveModule {
         // Set units of the CANCoder to radians and velocity being radians per second
         absoluteEncoder = new CANCoder(absoluteEncoderId);
 
-        CANCoderConfiguration config = new CANCoderConfiguration(); 
+        CANCoderConfiguration config = new CANCoderConfiguration();
+         
         config.sensorCoefficient = 2 * Math.PI / 4096.0;    // To Return Radians
         config.unitString= "rad";
         config.sensorTimeBase = SensorTimeBase.PerSecond;
@@ -70,6 +71,8 @@ public class SwerveModule {
         // Set Up PID Controller
         turningPidController = new PIDController(SwerveModuleConstants.kPTurning, 0, 0);
         turningPidController.enableContinuousInput(-Math.PI, Math.PI);
+
+        SmartDashboard.putNumber(swerveModuleID + "Absolute Encoder Radians", getAbsoluteEncoderRad());
 
         resetEncoders();
     }
@@ -101,10 +104,23 @@ public class SwerveModule {
         return rotVel;
     }
 
+    public double getAbsoluteEncoderRaw() {
+        return absoluteEncoder.getAbsolutePosition();
+    }
+
+    public double getAbsoluteEncoderRawDegrees() {
+        return Math.toDegrees(getAbsoluteEncoderRaw());
+    }
+    
+    public double getAbsoluteEncoder() {
+        return getAbsoluteEncoderRaw() - Math.PI;
+    }
+
     public double getAbsoluteEncoderRad() {
-        double angle = absoluteEncoder.getPosition();            // Position in Radians
-        angle -= absoluteEncoderOffsetRad;                       // Correct for Sensor Misaligned
-        angle = angle * (absoluteEncoderReversed ? -1.0 : 1.0);  // Change sign as needed
+        double angle = getAbsoluteEncoder();                     // Position in Radians
+        angle += absoluteEncoderOffsetRad;// Correct for Sensor Misaligned
+        angle -= Math.PI;
+        //angle -= angle * (absoluteEncoderReversed ? -1.0 : 1.0);  // Change sign as needed
         return angle;
     }
 
@@ -133,11 +149,11 @@ public class SwerveModule {
         return new SwerveModuleState(getDriveVelocity(), new Rotation2d(getAbsoluteEncoderRad()));
     }
 
-    public void setSingleModule(double speed, double angle) {   
-        // speed in Meters/sec , angle in Degrees   
+    public void setSingleModule(double speed, double angle) {  
+        // speed in Meters/sec , angle in Degrees -180 Full CW 0 to +180 Full CCW     
         tgtSpeed = speed;
         tgtAngle = angle;
-        driveMotor.set(speed / DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond);
+        driveMotor.set(speed / DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond); // 
         turningMotor.set(turningPidController.calculate(getAbsoluteEncoderRad(), Math.toRadians(angle)));
     }
 
@@ -154,29 +170,30 @@ public class SwerveModule {
         driveMotor.set(state.speedMetersPerSecond / DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond);
         // Power the Turning Motor - This uses a PID controller to lock in on Angle (Current Angle , Setpoint)
         turningMotor.set(turningPidController.calculate(getAbsoluteEncoderRad(), state.angle.getRadians()));
-        // Update smart dashboard
-        SmartDashboard.putString( swerveModuleID + " State", state.toString());
-        SmartDashboard.putNumber( swerveModuleID + " Angle", state.angle.getDegrees());
-        SmartDashboard.putNumber( swerveModuleID + " Speed", state.speedMetersPerSecond);
-        SmartDashboard.putNumber( swerveModuleID + " Dist Meters", getDrivePosition());
-        SmartDashboard.putNumber( swerveModuleID + " Dist Inches", Units.metersToInches(getDrivePosition()));
-        SmartDashboard.putNumber( swerveModuleID + " Vel Meters/Sec", getDriveVelocity());
-        SmartDashboard.putNumber( swerveModuleID + " Vel Ft/Sec", Units.metersToFeet(getDriveVelocity()));
     }
 
     public void updateShuffleBoard(){
-        SmartDashboard.putNumber( swerveModuleID + " Tgt Angle", tgtAngle);
+        //SmartDashboard.putNumber( swerveModuleID + "Absolute Encoder Rad", state.angle.getRadians());
+        //SmartDashboard.putNumber( swerveModuleID + "Absolute Encoder Rad", getAbsoluteEncoderRad());
+
         SmartDashboard.putNumber( swerveModuleID + " Tgt Speed", tgtSpeed);
+        SmartDashboard.putNumber( swerveModuleID + " PID Tgt Angle Degrees", tgtAngle);
+        SmartDashboard.putNumber( swerveModuleID + " PID Tgt Angle Rad", Math.toRadians(tgtAngle));
 
-        SmartDashboard.putNumber( swerveModuleID + " Turn Encoder", getAbsoluteEncoderPosition());
-        SmartDashboard.putNumber( swerveModuleID + " Raw Encoder Angle", absoluteEncoder.getPosition());
-        SmartDashboard.putNumber( swerveModuleID + " Turn Angle Degrees", getAbsoluteEncoderDegrees());
-        SmartDashboard.putNumber( swerveModuleID + " Turn Angle Radians", getAbsoluteEncoderRad());
-
-        SmartDashboard.putNumber( swerveModuleID + " Drive Encoder", getDriveWheelEncoderPosition());
-        SmartDashboard.putNumber( swerveModuleID + " Drive Inches", Units.metersToInches(getDrivePosition()));
-        SmartDashboard.putNumber( swerveModuleID + " Drive Meters", getDrivePosition());
+        SmartDashboard.putNumber( swerveModuleID + " PID Absolute Encoder Raw", getAbsoluteEncoderRaw());
+        SmartDashboard.putNumber( swerveModuleID + " PID Corrected Absolute Encoder Rad", getAbsoluteEncoderRad());
+        SmartDashboard.putNumber( swerveModuleID + " PID Absolute Encode Raw Degrees", getAbsoluteEncoderRawDegrees());
     }
+
+        // SmartDashboard.putNumber( swerveModuleID + " Turn Encoder", getAbsoluteEncoderPosition());
+        // SmartDashboard.putNumber( swerveModuleID + " Raw Encoder Angle", absoluteEncoder.getPosition());
+        // SmartDashboard.putNumber( swerveModuleID + " Turn Angle Degrees", getAbsoluteEncoderDegrees());
+        // SmartDashboard.putNumber( swerveModuleID + " Turn Angle Radians", getAbsoluteEncoderRad());
+
+        // SmartDashboard.putNumber( swerveModuleID + " Drive Encoder", getDriveWheelEncoderPosition());
+        // SmartDashboard.putNumber( swerveModuleID + " Drive Inches", Units.metersToInches(getDrivePosition()));
+        // SmartDashboard.putNumber( swerveModuleID + " Drive Meters", getDrivePosition());
+    
 
     public void stop() {
         driveMotor.set(0);
