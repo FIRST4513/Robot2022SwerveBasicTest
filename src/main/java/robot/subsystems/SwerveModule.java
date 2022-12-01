@@ -31,8 +31,13 @@ public class SwerveModule {
     private double tgtSpeed=0, tgtAngle=0;
 
     // Constructor
-    public SwerveModule(int driveMotorId, int turningMotorId, boolean driveMotorReversed, boolean turningMotorReversed,
-                        int absoluteEncoderId, double absoluteEncoderOffset, boolean absoluteEncoderReversed) {
+    public SwerveModule(int driveMotorId, 
+                        int turningMotorId,
+                        boolean driveMotorReversed,
+                        boolean turningMotorReversed,
+                        int absoluteEncoderId,
+                        double absoluteEncoderOffset,
+                        boolean absoluteEncoderReversed) {
 
         this.absoluteEncoderOffsetRad = absoluteEncoderOffset;
         this.absoluteEncoderReversed = absoluteEncoderReversed;
@@ -135,8 +140,7 @@ public class SwerveModule {
     public double getWHeelCurrentAngleDegrees(){
         // Returns offset adjusted angle
         // Also changes scale from 0-360 to (0 to +180) for CCW or (0 to -180) for CW rotation
-        double angle = getWHeelCurrentAngleRadians();
-        return Math.toDegrees(angle);
+        return Math.toDegrees(getWHeelCurrentAngleRadians());
     }
 
     // ------------------ Reset Encoders ---------------

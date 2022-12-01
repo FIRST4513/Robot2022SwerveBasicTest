@@ -77,8 +77,8 @@ public class driveByJoystickCmd extends CommandBase {
             SmartDashboard.putNumber("Joy Rotation Raw 3", rotation);
 
         // Step 2a - Convert Joystick values to Field Velocity (Meters/Sec)
-            xSpeed = xSpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;  // Not Used in this program
-            ySpeed = ySpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
+            xSpeed *= DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;  // Not Used in this program
+            ySpeed *= DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
             wheelRotation = rotation * DriveTrainConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
 
             SmartDashboard.putNumber("Joy Drive ySpeed Meters", ySpeed);
@@ -87,7 +87,7 @@ public class driveByJoystickCmd extends CommandBase {
 
 
         // Step 2b - Convert Joystick angle -1 to +1  into -PI cw to +PI ccw
-            wheelAngle = (wheelAngle * -Math.PI);
+            wheelAngle *= Math.PI;
             SmartDashboard.putNumber("Joy Wheel Angle Radians", wheelAngle);
             SmartDashboard.putNumber("Joy Wheel Angle Degrees", Math.toDegrees(wheelAngle));
             // Step 2b - Convert Joystick angle -1 to +1  into -180 cw to +180 ccw
@@ -99,29 +99,29 @@ public class driveByJoystickCmd extends CommandBase {
         if (m_joystick.getRawButton(5)){
             // Maual Drive Front Left Wheel
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kFrontLeftDriveMotorPort, xSpeed, wheelAngle);
         } else if (m_joystick.getRawButton(6)){
             // Maual Drive Front Right Wheel
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kFrontRightDriveMotorPort, xSpeed, wheelAngle);
         } else if (m_joystick.getRawButton(3)){
             // Maual Drive Back Left Wheel
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kBackLeftDriveMotorPort, xSpeed, wheelAngle);
         } else if (m_joystick.getRawButton(4)){
             // Maual Drive Back Right Wheel
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kBackRightDriveMotorPort, xSpeed, wheelAngle);
         } else if (m_joystick.getRawButton(1)){
             // Maual Drive All Wheels
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kFrontLeftDriveMotorPort, xSpeed, wheelAngle);
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kFrontRightDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kFrontRightDriveMotorPort, xSpeed, wheelAngle);
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kBackLeftDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kBackLeftDriveMotorPort, xSpeed, wheelAngle);
             m_drivetrainSubSys.setSingleModuleState(
-                    DriveTrainConstants.kBackRightDriveMotorPort, ySpeed, wheelAngle);
+                    DriveTrainConstants.kBackRightDriveMotorPort, xSpeed, wheelAngle);
         } else if (m_joystick.getRawButton(7)){
             // Drive All wheels using Chassis Speeds Kinematics
             translation = new Translation2d(xSpeed, ySpeed);
