@@ -104,6 +104,8 @@ public class SwerveModule {
         return rotVel;
     }
 
+    // ----------  Absolute Encoder Methods -----------
+
     public double getAbsoluteEncoderRaw() {
         return absoluteEncoder.getAbsolutePosition();
     }
@@ -112,6 +114,30 @@ public class SwerveModule {
         return Math.toDegrees(getAbsoluteEncoderRaw());
     }
     
+    public double getWHeelCurrentAngleRad(){
+        // Returns (0 to + PI) for CCW     or      (0 to - PI) for CW rotation
+        double angle = getAbsoluteEncoderRaw() - absoluteEncoderOffsetRad;;
+        if ( absoluteEncoderOffsetRad <= Math.PI){
+            // Offset <= PI (180 degrees)
+            if ( angle > Math.PI ){
+                return (angle - (2 * Math.PI));
+            }
+        } else {
+            // Offset > PI (180 degrees)
+            if ( angle < -Math.PI ){
+                return (angle + (2 * Math.PI));
+            }
+        }
+        return angle;
+    }
+
+    public double getWHeelCurrentAngleDegree(){
+        // Returns (0 to +180) for CCW     or      (0 to -180) for CW rotation
+
+        double angle = getWHeelCurrentAngleRad();
+        return Math.toDegrees(angle);
+    }
+
     public double getAbsoluteEncoder() {
         return getAbsoluteEncoderRaw() - Math.PI;
     }
@@ -173,27 +199,22 @@ public class SwerveModule {
     }
 
     public void updateShuffleBoard(){
-        //SmartDashboard.putNumber( swerveModuleID + "Absolute Encoder Rad", state.angle.getRadians());
-        //SmartDashboard.putNumber( swerveModuleID + "Absolute Encoder Rad", getAbsoluteEncoderRad());
 
         SmartDashboard.putNumber( swerveModuleID + " Tgt Speed", tgtSpeed);
         SmartDashboard.putNumber( swerveModuleID + " PID Tgt Angle Degrees", tgtAngle);
         SmartDashboard.putNumber( swerveModuleID + " PID Tgt Angle Rad", Math.toRadians(tgtAngle));
 
-        SmartDashboard.putNumber( swerveModuleID + " PID Absolute Encoder Raw", getAbsoluteEncoderRaw());
-        SmartDashboard.putNumber( swerveModuleID + " PID Corrected Absolute Encoder Rad", getAbsoluteEncoderRad());
-        SmartDashboard.putNumber( swerveModuleID + " PID Absolute Encode Raw Degrees", getAbsoluteEncoderRawDegrees());
-    }
+        SmartDashboard.putNumber( swerveModuleID + " PID Absolute Encoder Raw Radians", getAbsoluteEncoderRaw());
+        SmartDashboard.putNumber( swerveModuleID + " PID Absolute Encoder Raw Degrees", getAbsoluteEncoderRawDegrees());
 
-        // SmartDashboard.putNumber( swerveModuleID + " Turn Encoder", getAbsoluteEncoderPosition());
-        // SmartDashboard.putNumber( swerveModuleID + " Raw Encoder Angle", absoluteEncoder.getPosition());
-        // SmartDashboard.putNumber( swerveModuleID + " Turn Angle Degrees", getAbsoluteEncoderDegrees());
-        // SmartDashboard.putNumber( swerveModuleID + " Turn Angle Radians", getAbsoluteEncoderRad());
+        SmartDashboard.putNumber( swerveModuleID + " PID Corrected Absolute Encoder Rad", getWHeelCurrentAngleRad());
+        SmartDashboard.putNumber( swerveModuleID + " PID Corrected Absolute Encoder Degrees", getWHeelCurrentAngleDegree());
 
         // SmartDashboard.putNumber( swerveModuleID + " Drive Encoder", getDriveWheelEncoderPosition());
         // SmartDashboard.putNumber( swerveModuleID + " Drive Inches", Units.metersToInches(getDrivePosition()));
         // SmartDashboard.putNumber( swerveModuleID + " Drive Meters", getDrivePosition());
-    
+    }
+
 
     public void stop() {
         driveMotor.set(0);
