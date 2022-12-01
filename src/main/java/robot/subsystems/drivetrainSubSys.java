@@ -163,7 +163,8 @@ public class drivetrainSubSys extends SubsystemBase {
     }
 
     public void setSingleModuleState(int canID, double speed, double angle) { 
-        // speed in Meters/sec , angle in Degrees -180 Full CW 0 to +180 Full CCW     
+        // This is a manual drive of the wheels used only to test and get calibration data  
+        // speed in Meters/sec , angle in Radians +PI Full CCW -PI Full CW     
         if (canID == DriveTrainConstants.kFrontLeftDriveMotorPort){
             frontLeft.setSingleModule( speed, angle);
         } else if (canID == DriveTrainConstants.kFrontRightDriveMotorPort){ 
@@ -174,16 +175,17 @@ public class drivetrainSubSys extends SubsystemBase {
             backRight.setSingleModule( speed, angle);}
     }
 
-    public void setModuleStates(SwerveModuleState[] desiredStates) {
+    public void setModuleStates(SwerveModuleState[] newStates) {
+        // This is the normal method used to drive the wheels!
         // Make sure all wheels are at the same Velocity (in the "desiredStates" Array)
         SwerveDriveKinematics.desaturateWheelSpeeds(
-            desiredStates, 
+            newStates, 
             DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond);
         // Send State (Velocity and Angle) to Each Swerve Drive Motor
-        frontLeft.setDesiredState(desiredStates[0]);
-        frontRight.setDesiredState(desiredStates[1]);
-        backLeft.setDesiredState(desiredStates[2]);
-        backRight.setDesiredState(desiredStates[3]);
+        frontLeft.setDesiredState(newStates[0]);
+        frontRight.setDesiredState(newStates[1]);
+        backLeft.setDesiredState(newStates[2]);
+        backRight.setDesiredState(newStates[3]);
     }
 
     public void updateShuffleboard(){

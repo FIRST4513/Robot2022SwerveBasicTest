@@ -55,6 +55,7 @@ public class driveByJoystickCmd extends CommandBase {
             double throttle = (-m_joystick.getThrottle()/2) + 0.5; // convert from ( -1:1 ) to ( 0:1 ) 
             SmartDashboard.putNumber("Joy Drive ySpeed Raw 1", ySpeed);
             SmartDashboard.putNumber("Joy Drive xSpeed Raw 1", xSpeed);
+
         // Step 1b) Apply deadband (in case joystick doesn't return fully to Zero position)
             xSpeed = deadBand(xSpeed);  // Not Used in this program
             ySpeed = deadBand(ySpeed);
@@ -68,21 +69,22 @@ public class driveByJoystickCmd extends CommandBase {
             SmartDashboard.putNumber("Joy Drive ySpeed Raw 3", ySpeed);
 
         // Step 2a - Convert Joystick values to Field Velocity (Meters/Sec)
-        xSpeed = xSpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;  // Not Used in this program
-        ySpeed = ySpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
+            xSpeed = xSpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;  // Not Used in this program
+            ySpeed = ySpeed * DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
 
         SmartDashboard.putNumber("Joy Drive ySpeed Meters", ySpeed);
-        
-        // Step 2b - Convert Joystick angle -1 to +1  into -180 cw to 180 ccw
-        wheelAngle = (wheelAngle * -180.0);
-        // if (wheelAngle < 0.0 ){
-        //     wheelAngle = wheelAngle + 360.0;
-        // }
-        
-        SmartDashboard.putNumber("Joy Wheel Angle Degree", wheelAngle);
-        SmartDashboard.putNumber("Joy Wheel Angle Radians", Math.toRadians(wheelAngle));
 
-        // Send raw data to swerve module (For Testing Purposes)
+        // Step 2b - Convert Joystick angle -1 to +1  into -PI cw to +PI ccw
+            wheelAngle = (wheelAngle * -Math.PI);
+
+        // Step 2b - Convert Joystick angle -1 to +1  into -180 cw to +180 ccw
+        //    wheelAngle = (wheelAngle * -180.0);
+
+        SmartDashboard.putNumber("Joy Wheel Angle Radians", wheelAngle);
+        SmartDashboard.putNumber("Joy Wheel Angle Degrees", Math.toDegrees(wheelAngle));
+
+        // Send raw data to swerve module (Speed Meters/Sec , Wheel Angle Radians)
+        // 
         if (m_joystick.getRawButton(5)){
             m_drivetrainSubSys.setSingleModuleState(DriveTrainConstants.kFrontLeftDriveMotorPort, ySpeed, wheelAngle);
         } else if (m_joystick.getRawButton(6)){
