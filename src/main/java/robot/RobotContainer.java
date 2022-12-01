@@ -175,6 +175,7 @@ public Joystick getdriverJoy() {
             AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints);
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
+    /*
     // Step 4. Construct command to follow trajectory
     SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
             trajectory,
@@ -185,13 +186,14 @@ public Joystick getdriverJoy() {
             thetaController,
             m_drivetrainSubSys::setModuleStates,
             m_drivetrainSubSys);
-
+    */
     // Step 5. Add some init and wrap-up, and return everything
     return new SequentialCommandGroup(
             new InstantCommand(() -> m_drivetrainSubSys.resetOdometry(trajectory.getInitialPose())),
-            swerveControllerCommand,
+            //swerveControllerCommand,
             new InstantCommand(() -> m_drivetrainSubSys.stopModules()));
+  
   }
-
+  
 }
 

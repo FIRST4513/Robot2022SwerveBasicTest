@@ -171,7 +171,7 @@ public class SwerveModule {
         turningMotor.set(turningPidController.calculate(getWHeelCurrentAngleRadians(), tgtAngle));
     }
 
-    public void setDesiredState(SwerveModuleState state) {
+    public void setDesiredState(SwerveModuleState state, boolean isOpenLoop) {
         // This is the normal method used to drive the wheels!
         // Passed state provides - Wheel Velocity in Meters/Sec and Wheel Angle in Radians.
         if (Math.abs(state.speedMetersPerSecond) < 0.001) {
