@@ -86,10 +86,14 @@ public final class Constants {
         public static final double kWheelBase = Units.inchesToMeters(23.75);  // Between front and back wheels
 
         public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
-                new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
-                new Translation2d(kWheelBase / 2, kTrackWidth / 2),
-                new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
-                new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
+                // Front Left
+                new Translation2d(kWheelBase / 2.0, kTrackWidth / 2.0),
+                // Front Right
+                new Translation2d(kWheelBase / 2.0, -kTrackWidth / 2.0),
+                // Back Left
+                new Translation2d(-kWheelBase / 2.0, kTrackWidth / 2.0),
+                // Back Right
+                new Translation2d(-kWheelBase / 2.0, +kTrackWidth / 2.0));
 
         // Front Left Swerve Drive Configs (CAN ID's and various flags and offsets)
         public static final int     kFrontLeftDriveMotorPort = 1;
