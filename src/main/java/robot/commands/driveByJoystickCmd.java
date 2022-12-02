@@ -54,7 +54,7 @@ public class driveByJoystickCmd extends CommandBase {
         // Step 1 - Get joystick Inputs
         // Step 1a) Get joystick inputs from individual axis
             double xSpeed = -m_joystick.getY();      // NOTE: xSpeed (Fwd/Back) comes from Y axis
-            double ySpeed = m_joystick.getX();     // NOTE: ySpeed (Left/Right) comes from X axis
+            double ySpeed = -m_joystick.getX();     // NOTE: ySpeed (Left/Right) comes from X axis
             double rotation = -m_joystick.getTwist();
 
             double throttle = (-m_joystick.getThrottle()/2) + 0.5; // convert from ( -1:1 ) to ( 0:1 ) 
@@ -94,6 +94,11 @@ public class driveByJoystickCmd extends CommandBase {
             //    wheelAngle = (wheelAngle * -180.0);
 
 
+        if (m_joystick.getRawButton(11)){
+            // Reset Gyro
+            m_drivetrainSubSys.zeroHeading();
+        }
+        
         // Send raw data to swerve module (Speed Meters/Sec , Wheel Angle Radians)
         // 
         if (m_joystick.getRawButton(5)){
@@ -112,7 +117,8 @@ public class driveByJoystickCmd extends CommandBase {
             // Maual Drive Back Right Wheel
             m_drivetrainSubSys.setSingleModuleState(
                     DriveTrainConstants.kBackRightDriveMotorPort, xSpeed, wheelAngle);
-        } else if (m_joystick.getRawButton(1)){
+
+        } else if (m_joystick.getRawButton(8)){
             // Maual Drive All Wheels
             m_drivetrainSubSys.setSingleModuleState(
                     DriveTrainConstants.kFrontLeftDriveMotorPort, xSpeed, wheelAngle);
@@ -122,13 +128,14 @@ public class driveByJoystickCmd extends CommandBase {
                     DriveTrainConstants.kBackLeftDriveMotorPort, xSpeed, wheelAngle);
             m_drivetrainSubSys.setSingleModuleState(
                     DriveTrainConstants.kBackRightDriveMotorPort, xSpeed, wheelAngle);
-        } else if (m_joystick.getRawButton(7)){
+
+        } else if (m_joystick.getRawButton(1)){
             // Drive All wheels using Chassis Speeds Kinematics
             translation = new Translation2d(xSpeed, ySpeed);
             if (m_joystick.getRawButton(2)){
-                fieldRelative = true;
-            } else {
                 fieldRelative = false;
+            } else {
+                fieldRelative = true;
             }
             m_drivetrainSubSys.drive(translation, wheelRotationSpeed, fieldRelative, false);
         } else {

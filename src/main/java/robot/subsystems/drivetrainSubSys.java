@@ -134,7 +134,7 @@ public class drivetrainSubSys extends SubsystemBase {
 
     public double getHeadingDegrees() {
         // This will return values from -180 to +180 degrees of yaw
-        return Math.IEEEremainder(gyro.getAngle(), 360);
+        return -Math.IEEEremainder(gyro.getAngle(), 360);
     }
 
     public Rotation2d getGyroHeadingRotation2d() {
