@@ -49,13 +49,13 @@ public class driveByJoystickCmd extends CommandBase {
     @Override
     public void execute() {
         double wheelAngle = 0;
-        double wheelRotation = 0;
+        double wheelRotationSpeed = 0;
 
         // Step 1 - Get joystick Inputs
         // Step 1a) Get joystick inputs from individual axis
             double xSpeed = -m_joystick.getY();      // NOTE: xSpeed (Fwd/Back) comes from Y axis
             double ySpeed = m_joystick.getX();     // NOTE: ySpeed (Left/Right) comes from X axis
-            double rotation = m_joystick.getTwist();
+            double rotation = -m_joystick.getTwist();
 
             double throttle = (-m_joystick.getThrottle()/2) + 0.5; // convert from ( -1:1 ) to ( 0:1 ) 
             SmartDashboard.putNumber("Joy Drive xSpeed Raw 1", xSpeed);
@@ -71,23 +71,23 @@ public class driveByJoystickCmd extends CommandBase {
         // Step 1c) Limit Speeds based on throttle setting
             xSpeed *= throttle;  // Not Used in this program
             ySpeed *= throttle;
-            rotation *= throttle;
+            //rotation *= throttle;
             SmartDashboard.putNumber("Joy Drive ySpeed Raw 3", ySpeed);
-            SmartDashboard.putNumber("Joy Drive ySpeed Raw 3", xSpeed);
+            SmartDashboard.putNumber("Joy Drive xSpeed Raw 3", xSpeed);
             SmartDashboard.putNumber("Joy Rotation Raw 3", rotation);
 
         // Step 2a - Convert Joystick values to Field Velocity (Meters/Sec)
             xSpeed *= DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;  // Not Used in this program
             ySpeed *= DriveTrainConstants.kTeleDriveMaxSpeedMetersPerSecond;
-            wheelRotation = rotation * DriveTrainConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
+            wheelRotationSpeed = rotation * DriveTrainConstants.kTeleDriveMaxAngularSpeedRadiansPerSecond;
 
             SmartDashboard.putNumber("Joy Drive ySpeed Meters", ySpeed);
             SmartDashboard.putNumber("Joy Drive xSpeed Meters", xSpeed);
-            SmartDashboard.putNumber("Joy Rotation Speed", wheelRotation);
+            SmartDashboard.putNumber("Joy Rotation Speed", wheelRotationSpeed);
 
 
         // Step 2b - Convert Joystick angle -1 to +1  into -PI cw to +PI ccw
-            wheelAngle *= Math.PI;
+            wheelAngle = rotation * Math.PI;
             SmartDashboard.putNumber("Joy Wheel Angle Radians", wheelAngle);
             SmartDashboard.putNumber("Joy Wheel Angle Degrees", Math.toDegrees(wheelAngle));
             // Step 2b - Convert Joystick angle -1 to +1  into -180 cw to +180 ccw
@@ -130,9 +130,9 @@ public class driveByJoystickCmd extends CommandBase {
             } else {
                 fieldRelative = false;
             }
-            m_drivetrainSubSys.drive(translation, wheelRotation, fieldRelative, false);
+            m_drivetrainSubSys.drive(translation, wheelRotationSpeed, fieldRelative, false);
         } else {
-             // Stop al Motion
+             // Stop all Motion
              m_drivetrainSubSys.stopModules();           
         }
     }

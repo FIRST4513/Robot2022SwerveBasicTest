@@ -178,9 +178,9 @@ public class drivetrainSubSys extends SubsystemBase {
 
 
     public void drive(Translation2d translation, double rotation, boolean fieldRelative, boolean isOpenLoop) { 
-        if (Math.abs(rotation)< 0.03) {
-            rotation = 0.0;
-        }
+        // if (Math.abs(rotation)< 0.03) {
+        //     rotation = 0.0;
+        // }
 
     
         // Step 1 - Create a "Chassis Speeds" Object from field velocity targets and current Gyro Angle
