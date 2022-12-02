@@ -93,7 +93,7 @@ public final class Constants {
                 // Back Left
                 new Translation2d(-kWheelBase / 2.0, kTrackWidth / 2.0),
                 // Back Right
-                new Translation2d(-kWheelBase / 2.0, +kTrackWidth / 2.0));
+                new Translation2d(-kWheelBase / 2.0, -kTrackWidth / 2.0));
 
         // Front Left Swerve Drive Configs (CAN ID's and various flags and offsets)
         public static final int     kFrontLeftDriveMotorPort = 1;
