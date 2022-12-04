@@ -45,7 +45,7 @@ public class autoTestCmdGrp extends SequentialCommandGroup {
     //          to ensure no wheel velocity goes above max velocity
     TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
           //AutoConstants.kMaxSpeedMetersPerSecond,
-          0.5,
+          0.75,
           //AutoConstants.kMaxAccelerationMetersPerSecondSquared)
           0.5);
 
