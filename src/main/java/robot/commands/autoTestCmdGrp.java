@@ -44,8 +44,12 @@ public class autoTestCmdGrp extends SequentialCommandGroup {
     // Step 1. Configure trajectory settings and add a Kinematics constraint
     //          to ensure no wheel velocity goes above max velocity
     TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
-          AutoConstants.kMaxSpeedMetersPerSecond,
-          AutoConstants.kMaxAccelerationMetersPerSecondSquared);
+          //AutoConstants.kMaxSpeedMetersPerSecond,
+          0.5,
+          //AutoConstants.kMaxAccelerationMetersPerSecondSquared)
+          0.5);
+
+          
     trajectoryConfig.setKinematics(DriveTrainConstants.kDriveKinematics);
 
     // Step 2. Create a "trajectory" object
