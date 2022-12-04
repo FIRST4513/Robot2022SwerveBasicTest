@@ -220,7 +220,18 @@ public class drivetrainSubSys extends SubsystemBase {
         backRight.setDesiredState(swerveModuleStates[3], isOpenLoop);
     }
 
-
+    // ---------------------- Drive the Swerve Module Motors --------------------------
+    public void setSwerveModulesStates(SwerveModuleState[] desiredStates) {
+        // Make sure all wheels are at the same Velocity (in the "desiredStates" Array)
+        SwerveDriveKinematics.desaturateWheelSpeeds(
+                desiredStates, 
+                DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond);
+        // Send State (Velocity and Angle) to Each Swerve Drive Motor
+        frontLeft.setDesiredState(desiredStates[0], false);
+        frontRight.setDesiredState(desiredStates[1], false);
+        backLeft.setDesiredState(desiredStates[2], false);
+        backRight.setDesiredState(desiredStates[3], false);
+    }
     public void updateShuffleboard(){
         // SmartDashboard.putNumber("Robot Heading Degrees", getHeadingDegrees());
         // SmartDashboard.putString("Robot Loc Meters", getPoseMeters().getTranslation().toString());
