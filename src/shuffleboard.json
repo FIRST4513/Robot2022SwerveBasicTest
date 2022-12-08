@@ -240,6 +240,17 @@
               "_source0": "network_table:///SmartDashboard/buildShuffleboardCmd",
               "_title": "/SmartDashboard/buildShuffleboardCmd"
             }
+          },
+          "9,4": {
+            "size": [
+              2,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Robot Heading Degrees",
+              "_title": "SmartDashboard/Robot Heading Degrees"
+            }
           }
         }
       }
@@ -491,7 +502,7 @@
   "windowGeometry": {
     "x": -6.0,
     "y": 0.0,
-    "width": 966.0,
-    "height": 503.0
+    "width": 1706.5,
+    "height": 862.0
   }
 }
