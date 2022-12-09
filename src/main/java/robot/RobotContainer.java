@@ -153,6 +153,8 @@ public Joystick getdriverJoy() {
   */
   public Command getAutonomousCommand() {
 
+    System.out.println("Auto Command running");
+
     // Step 1. Configure trajectory settings
     TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
           AutoConstants.kMaxSpeedMetersPerSecond,
@@ -160,6 +162,8 @@ public Joystick getdriverJoy() {
     // Add a swerve drive kinematics constraint to the config to ensure that no wheel velocity
     // of a swerve drive goes above the max velocity.
     trajectoryConfig.setKinematics(DriveTrainConstants.kDriveKinematics);
+
+    System.out.println("Completed Step 1");
 
     // Step 2. Create a "trajectory Generator" object
     Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
@@ -170,6 +174,8 @@ public Joystick getdriverJoy() {
             new Pose2d(2, -1, Rotation2d.fromDegrees(180)),
             trajectoryConfig);
 
+    System.out.println("Completed Step 2");
+
     // Step 3. Define PID controllers for tracking trajectory
     PIDController xController = new PIDController(AutoConstants.kPXController, 0, 0);
     PIDController yController = new PIDController(AutoConstants.kPYController, 0, 0);
@@ -177,25 +183,29 @@ public Joystick getdriverJoy() {
             AutoConstants.kPThetaController, 0, 0, AutoConstants.kThetaControllerConstraints);
     thetaController.enableContinuousInput(-Math.PI, Math.PI);
 
-    /*
+    System.out.println("Completed Step 3");
+
     // Step 4. Construct command to follow trajectory
     SwerveControllerCommand swerveControllerCommand = new SwerveControllerCommand(
-            trajectory,
-            m_drivetrainSubSys::getPoseMeters,
-            DriveTrainConstants.kDriveKinematics,
-            xController,
-            yController,
-            thetaController,
-            m_drivetrainSubSys::setModuleStates,
-            m_drivetrainSubSys);
-    */
+      trajectory,
+      m_drivetrainSubSys::getPoseMeters,
+      DriveTrainConstants.kDriveKinematics,
+      xController,
+      yController,
+      thetaController,
+      m_drivetrainSubSys::setSwerveModulesStates,
+      m_drivetrainSubSys);
+
+    System.out.println("Completed Step 4");
+
     // Step 5. Add some init and wrap-up, and return everything
     return new SequentialCommandGroup(
             new InstantCommand(() -> m_drivetrainSubSys.resetOdometry(trajectory.getInitialPose())),
-            //swerveControllerCommand,
+            swerveControllerCommand,
             new InstantCommand(() -> m_drivetrainSubSys.stopModules()));
   
-  }
-  
+            
+            
+    }  
 }
 

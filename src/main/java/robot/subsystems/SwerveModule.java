@@ -203,9 +203,11 @@ public class SwerveModule {
         SmartDashboard.putNumber( swerveModuleID + " PID Corrected Absolute Encoder Radians", getWHeelCurrentAngleRadians());
         SmartDashboard.putNumber( swerveModuleID + " PID Corrected Absolute Encoder Degrees", getWHeelCurrentAngleDegrees());
 
-        // SmartDashboard.putNumber( swerveModuleID + " Drive Encoder", getDriveWheelEncoderPosition());
-        // SmartDashboard.putNumber( swerveModuleID + " Drive Inches", Units.metersToInches(getDrivePosition()));
-        // SmartDashboard.putNumber( swerveModuleID + " Drive Meters", getDrivePosition());
+        SmartDashboard.putNumber( swerveModuleID + " Drive Encoder", driveMotor.getSelectedSensorPosition());
+        SmartDashboard.putNumber( swerveModuleID + " Drive Inches", Units.metersToInches(getDrivePosition()));
+        SmartDashboard.putNumber( swerveModuleID + " Drive Meters", getDrivePosition());
+        
+        //SmartDashboard.
     }
 
 }

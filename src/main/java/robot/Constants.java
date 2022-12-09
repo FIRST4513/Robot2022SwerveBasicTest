@@ -46,7 +46,8 @@ public final class Constants {
         // ****************************************************************
         public static final double kDriveMotorGearRatio = 1 / 6.75;
         public static final double kDriveEncoderCountsPerRev = 4096;
-        public static final double kDriveEncoderDistancePerUnitMeters = 0.0000115387731;
+        // public static final double kDriveEncoderDistancePerUnitMeters = 0.0000115387731;
+        public static final double kDriveEncoderDistancePerUnitMeters = -0.0000212777;
 
         public static final double kDriveEncoderRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters; // ???
         public static final double kDriveEncoderRPM2MeterPerSec = kDriveEncoderRot2Meter / 60;                     // ??
