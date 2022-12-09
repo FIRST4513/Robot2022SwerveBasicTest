@@ -34,9 +34,6 @@ import robot.subsystems.drivetrainSubSys;
 public class autoTestCmdGrp extends SequentialCommandGroup {
 
 
-
-
-
     public SequentialCommandGroup autoTestCmdGrp(drivetrainSubSys drivetrainSubSys) {
         
 
@@ -44,17 +41,17 @@ public class autoTestCmdGrp extends SequentialCommandGroup {
         //          to ensure no wheel velocity goes above max velocity
         TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
                 //AutoConstants.kMaxSpeedMetersPerSecond,
-                0.75,
+                0.5,
                 //AutoConstants.kMaxAccelerationMetersPerSecondSquared)
                 0.5);
        
         
         trajectoryConfig.setKinematics(DriveTrainConstants.kDriveKinematics);
 
-            // Step 2. Create a "trajectory" object
-    //      Steps:
-    //          a) Go 3 ft forward
-    //          b) Go 3 Ft forward while also going 3 ft left while also rotating 180 degrees
+        // Step 2. Create a "trajectory" object
+        //      Steps:
+        //          a) Go 3 ft forward
+        //          b) Go 3 Ft forward while also going 3 ft left while also rotating 180 degrees
         Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
         new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(0)),
         List.of(

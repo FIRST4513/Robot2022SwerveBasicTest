@@ -22,6 +22,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.trajectory.Trajectory;
 import edu.wpi.first.math.trajectory.TrajectoryConfig;
 import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
@@ -157,8 +158,11 @@ public Joystick getdriverJoy() {
 
     // Step 1. Configure trajectory settings
     TrajectoryConfig trajectoryConfig = new TrajectoryConfig(
-          AutoConstants.kMaxSpeedMetersPerSecond,
-          AutoConstants.kMaxAccelerationMetersPerSecondSquared);
+          //AutoConstants.kMaxSpeedMetersPerSecond,
+          0.5,
+          //AutoConstants.kMaxAccelerationMetersPerSecondSquared);
+          0.5);
+
     // Add a swerve drive kinematics constraint to the config to ensure that no wheel velocity
     // of a swerve drive goes above the max velocity.
     trajectoryConfig.setKinematics(DriveTrainConstants.kDriveKinematics);
@@ -167,12 +171,26 @@ public Joystick getdriverJoy() {
 
     // Step 2. Create a "trajectory Generator" object
     Trajectory trajectory = TrajectoryGenerator.generateTrajectory(
-            new Pose2d(0, 0, new Rotation2d(0)),
-            List.of(
-                    new Translation2d(1, 0),
-                    new Translation2d(1, -1)),
-            new Pose2d(2, -1, Rotation2d.fromDegrees(180)),
-            trajectoryConfig);
+          new Pose2d(Units.inchesToMeters(0), Units.inchesToMeters(0), new Rotation2d(0)),
+          List.of(
+                  new Translation2d(Units.inchesToMeters(24.0), Units.inchesToMeters(0.0)),
+                  new Translation2d(Units.inchesToMeters(24.0), Units.inchesToMeters(0.0))),
+          new Pose2d(Units.inchesToMeters(48), Units.inchesToMeters(0.0), Rotation2d.fromDegrees(0)),
+          trajectoryConfig);
+
+            // new Pose2d(0, 0, new Rotation2d(0)),
+            // List.of(
+            //         new Translation2d(1, 0),
+            //         new Translation2d(1, 0)),
+            // new Pose2d(2, 0, Rotation2d.fromDegrees(0)),
+            // trajectoryConfig);
+
+            // new Pose2d(0, 0, new Rotation2d(0)),
+            // List.of(
+            //         new Translation2d(1, 0),
+            //         new Translation2d(1, -1)),
+            // new Pose2d(2, -1, Rotation2d.fromDegrees(180)),
+            // trajectoryConfig);
 
     System.out.println("Completed Step 2");
 
