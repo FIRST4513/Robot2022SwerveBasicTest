@@ -87,7 +87,7 @@ public class SwerveModule {
     public double getDriveVelocity() {
         double vel = driveMotor.getSelectedSensorVelocity();    // This is the counts for the last 100ms
         vel = vel * 10.0 * SwerveModuleConstants.kDriveEncoderDistancePerUnitMeters;  // This is the velocity in Meters Per Second
-        return vel;
+        return -vel;
     }
     
     //public double getTurningPosition() {

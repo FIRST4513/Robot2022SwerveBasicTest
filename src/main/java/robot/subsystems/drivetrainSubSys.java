@@ -242,6 +242,9 @@ public class drivetrainSubSys extends SubsystemBase {
         frontRight.updateShuffleBoard();
         backLeft.updateShuffleBoard();
         backRight.updateShuffleBoard();
+        SmartDashboard.putNumber("Pose X", Units.metersToInches(getPoseMeters().getX()));
+        SmartDashboard.putNumber("Pose Y", Units.metersToInches(getPoseMeters().getY()));
+        SmartDashboard.putNumber("Pose Rot", getPoseMeters().getRotation().getDegrees());
     }
 }
 

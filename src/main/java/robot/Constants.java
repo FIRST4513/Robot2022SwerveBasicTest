@@ -160,6 +160,7 @@ public final class Constants {
         //  =    16.488 Feet Per Second
         //  =    5.0256 Meters Per Second
         //
+
         public static final double kPhysicalMaxSpeedMetersPerSecond = 5;
         public static final double kPhysicalMaxAngularSpeedRadiansPerSecond = 2 * 2 * Math.PI;
 
@@ -175,10 +176,10 @@ public final class Constants {
     
     // ***************************** Autonomous Constants **********************************
     public static final class AutoConstants {
-        public static final double kMaxSpeedMetersPerSecond = DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond / 4;
+        public static final double kMaxSpeedMetersPerSecond = DriveTrainConstants.kPhysicalMaxSpeedMetersPerSecond / 5;  // was /4
         public static final double kMaxAngularSpeedRadiansPerSecond = //
         DriveTrainConstants.kPhysicalMaxAngularSpeedRadiansPerSecond / 10;
-        public static final double kMaxAccelerationMetersPerSecondSquared = 3;
+        public static final double kMaxAccelerationMetersPerSecondSquared = 0.7;  // was 3
         public static final double kMaxAngularAccelerationRadiansPerSecondSquared = Math.PI / 4;
         
         // public static final double kPXController = 1.5;
